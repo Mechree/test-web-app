@@ -14,28 +14,40 @@
     vr-mode-ui="enabled: false" 
     arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false"
     renderer="antialias: true; alpha: true">
-    
-    <a-camera gps-new-camera="gpsMinDistance: 5"></a-camera> <!-- Converts lat/long into 3D coordinates -->
+
+    <!-- Converts lat/long into 3D coordinates -->
+    <a-camera 
+      gps-new-camera="gpsMinDistance: 5">
+    </a-camera> 
 
     <!-- Parent Entity with GPS position -->
-    <a-entity gps-new-entity-place="latitude: 39.652085840355724; longitude: -84.12978955045378">
-      
-      <!-- Cylinder Primitive -->
-      <a-cylinder color="red" height="10" radius="5"></a-cylinder>
+    <a-entity 
+      gps-new-entity-place="latitude: 39.652085840355724; longitude: -84.12978955045378">
 
-      <!-- Text attached to Cylinder -->
-      <a-text 
+      <!-- Cylinder Primitive -->
+      <a-cylinder 
+        color="red" height="10" radius="5" opacity="0.4">
+      </a-cylinder>
+
+      <!-- Text attached to Cylinder; Not Working!!! -->
+      <!-- <a-text 
         value="Hello AR!" 
         position="0 8 0"  
         scale="15 15 15"  
         align="center"
         anchor="center"
         color="black">
-      </a-text>
+      </a-text> -->
 
     </a-entity>
 
+    <a-entity 
+      gps-new-entity-place="latitude: 39.652085840355724; longitude: -84.12978955045378"
+     text="value: Hello World;">
+    </a-entity>
+
   </a-scene>
+
 </body>
 
 </html>
