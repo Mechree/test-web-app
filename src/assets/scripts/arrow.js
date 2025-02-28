@@ -1,30 +1,21 @@
-// Run when page loads
-window.onload = () => {
-  let arrowEntityAdded = false
+// Links the scene and arrow to global variables by finding the scene and arrow entities in the HTML Document
+const scene = document.querySelector("a-scene")
+const elementArrow = document.getElementById("arrow")
 
-  // Use DOM API to obtain entity
-  const element = document.querySelector("[gps-new-camera]")
+// Waits for the scene element to load, then create the arrow entity and display its properties in the console log.
+scene.addEventListener("loaded", function () {
+  console.log("Arrow entity:", elementArrow)
+})
 
-  // Listener for GPS position update via the camera entity
-  element.addEventListener("gps-camera-update-position", (e) => {
-    if (!testEntityAdded) {
-      alert(
-        `Got first GPS position: lon ${e.detail.position.longitude} lat ${e.detail.position.latitude}`
-      )
-      // Add a box to the north of the initial GPS position
-      const entityArrow = document.createElement("a-triangle")
-      entityArrow.setAttribute("scale", {
-        x: 10,
-        y: 10,
-        z: 10,
-      })
-      entityArrow.setAttribute("material", { color: "yellow" })
-      entityArrow.setAttribute("gps-new-entity-place", {
-        latitude: e.detail.position.latitude + 0.001,
-        longitude: e.detail.position.longitude,
-      })
-      document.querySelector("a-scene").appendChild(entityArrow)
+// Custom component that logs users position in the world using THREE.js
+AFRAME.registerComponent("rotation-reader", {
+  tick: (function () {
+    var position = new THREE.Vector3()
+    var quaternion = new THREE.Quaternion()
+
+    return function () {
+      console.log(this.el.object3D.getWorldPosition(position))
+      console.log(this.el.object3D.getWorldQuaternion(quaternion))
     }
-    arrowEntityAdded = true
-  })
-}
+  })(),
+})
