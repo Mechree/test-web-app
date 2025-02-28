@@ -1,6 +1,6 @@
 window.onload = () => {
   // Links the scene and arrow to global variables by finding the scene and arrow entities in the HTML Document
-  const scene = document.querySelector.("a-scene")
+  const scene = document.querySelector("a-scene")
 
   // Waits for the scene element to load, then create the arrow entity and display its properties in the console log.
   scene.addEventListener("loaded", function () {
