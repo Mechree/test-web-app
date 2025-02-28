@@ -13,15 +13,46 @@
   <a-scene>
 
     <!--Arrow Entity will point to Event entity -->
-    <a-entity id="arrow" light="type: hemisphere; intensity: 2.0">
-      <a-triangle position="0 1.7 -3" height="5" width="5" color="yellow" depth=".1">
-        <a-text value="Your event is this way." width="7" align="center" color="white" position="0 -1.6 0"></a-text>
-        <a-box scale=".2 .8 .4" depth=".1" position="0 -.89 0 -10" color="yellow" shadow="receive: false">
-        </a-box>
-      </a-triangle>
+    <a-entity
+     id="userPOV">
+     
+      <a-camera
+       position="0 1.6 0"> 
+
+        <a-entity
+         id="arrow" 
+         position = "0 -.5 0"
+         scale = ".2 .2 .2"
+         light="type: hemisphere; intensity: 2.0">
+
+          <a-triangle
+           position="0 1.7 -3" 
+           color="yellow"
+           scale="0.2 0.2 0.2"
+           depth=".1">
+
+            <a-text
+             value="Your event is this way." 
+             width="7" 
+             align="center" 
+             color="white" 
+             position="0 -1.6 0">
+            </a-text>
+
+            <a-box
+             scale=".2 .8 .4" 
+             depth=".1" 
+             position="0 -.89 0 -10" 
+             color="yellow" 
+             shadow="receive: false">
+            </a-box>
+
+          </a-triangle>
+        </a-entity>
+      </a-camera>
     </a-entity>
   </a-scene>
-  
+
 </body>
 
 </html>
