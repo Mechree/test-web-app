@@ -28,14 +28,31 @@
     </a-entity>
 
     <!--Arrow Entity will point to Event entity -->
-    <a-entity id="arrow">
-      <a-triangle position="0 1.7 -3" height="5" width="5" color="yellow">
-        <a-text value="Your event is this way." width="7" align="center" color="white" position="0 -1.6 0"></a-text>
-        <a-box scale=".2 .8 .4" position="0 -.9 0 -10" color="yellow" shadow="receive: false">
+    <a-entity
+     id="arrow"
+     gps-new-entity-place="latitude: 39.653; longitude: -84.130">
+
+      <a-triangle
+       position="0 1.7 -3" 
+       height="5" 
+       width="5" 
+       color="yellow">
+
+        <a-text
+         value="Your event is this way." 
+         width="7" align="center" 
+         color="white" 
+         position="0 -1.6 0">
+        </a-text>
+
+        <a-box
+         scale=".2 .8 .4" 
+         position="0 -.9 0 -10" 
+         color="yellow" 
+         shadow="receive: false">
         </a-box>
       </a-triangle>
     </a-entity>
-    
   </a-scene>
 </body>
 </html>
