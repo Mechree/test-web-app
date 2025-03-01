@@ -1,10 +1,12 @@
-// Links the scene and arrow to global variables by finding the scene and arrow entities in the HTML Document
-const scene = document.querySelector("a-scene")
-
-// Waits for the scene element to load, then create the arrow entity and display its properties in the console log.
-scene.addEventListener("loaded", function () {
-  const elementArrow = document.getElementById("arrow")
-  console.log("Arrow entity:", elementArrow)
+// Waits for document to load and then Links the scene and arrow to global variables by finding the scene and arrow entities in the HTML Document
+document.addEventListener("DOMContentLoaded", function () {
+  const scene = document.querySelector("a-scene")
+  if (scene) {
+    scene.addEventListener("loaded", function () {
+      const elementArrow = document.getElementById("arrow")
+      console.log("Arrow entity:", elementArrow)
+    })
+  }
 })
 
 // Custom component that logs users position in the world using THREE.js
