@@ -32,8 +32,8 @@ AFRAME.registerComponent("rotation-reader", {
     var quaternion = new THREE.Quaternion()
 
     return function () {
-      console.log(this.el.object3D.getWorldPosition(position))
-      console.log(this.el.object3D.getWorldQuaternion(quaternion))
+      this.el.object3D.getWorldPosition(position)
+      this.el.object3D.getWorldQuaternion(quaternion)
     }
   })(),
 })
