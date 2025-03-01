@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (scene) {
     scene.addEventListener("loaded", function () {
-      const event = document.querySelector("event")
-      if (event) {
+      const elementEvent = document.getElementById("event")
+      if (elementEvent) {
         console.log("Event entity found!")
       } else {
         console.error("Event entity not found!")
