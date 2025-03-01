@@ -8,11 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (elementEvent) {
         console.log("Event entity found!")
         // Set scale, primitive and color.
-        entity.setAttribute("scale", {
-          x: 10,
-          y: 10,
-          z: 10,
-        })
         elementEvent.setAttribute("primitive", "box")
         elementEvent.setAttribute("material", {
           color: "red",
