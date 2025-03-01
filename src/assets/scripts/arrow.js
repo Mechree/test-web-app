@@ -25,15 +25,15 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 })
 
-// Custom component that logs users position in the world using THREE.js
-AFRAME.registerComponent("rotation-reader", {
-  tick: (function () {
-    var position = new THREE.Vector3()
-    var quaternion = new THREE.Quaternion()
+// // Custom component that logs users position in the world using THREE.js
+// AFRAME.registerComponent("rotation-reader", {
+//   tick: (function () {
+//     var position = new THREE.Vector3()
+//     var quaternion = new THREE.Quaternion()
 
-    return function () {
-      this.el.object3D.getWorldPosition(position)
-      this.el.object3D.getWorldQuaternion(quaternion)
-    }
-  })(),
-})
+//     return function () {
+//       this.el.object3D.getWorldPosition(position)
+//       this.el.object3D.getWorldQuaternion(quaternion)
+//     }
+//   })(),
+// })
