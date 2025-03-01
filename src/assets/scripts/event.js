@@ -1,6 +1,6 @@
 // Wait for the document to load, link scene and event entity to their respective variables, place event location via coordinates, and add some sort of marker.
 document.addEventListener("DOMContentLoaded", function () {
-  const scene = this.documentElement("a-scene")
+  const scene = document.querySelector("a-scene")
 
   if (scene) {
     scene.addEventListener("loaded", function () {
