@@ -8,10 +8,26 @@
   <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
   <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
   <script src="./src/assets/scripts/arrow.js"></script>
+  <script src="./src/assets/scripts/event.js"></script>
 </head>
 
 <body>
   <a-scene>
+
+    <!-- Event Entity -->
+    <a-entity
+     id="event"
+     geoemetry="primitive: box"
+     material="color: blue">
+
+      <a-text
+        value="EVENT NAME"
+        width="2"
+        align="center"
+        color="red">
+      </a-text>
+
+    </a-entity>
 
     <!--Arrow Entity will point to Event entity -->
     <a-entity

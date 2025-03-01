@@ -1,4 +1,4 @@
-// Waits for document to load and then Links the scene and arrow to global variables by finding the scene and arrow entities in the HTML Document
+// Waits for document to load and then Links the scene and arrow to variables by finding the scene and arrow entities in the HTML Documents
 document.addEventListener("DOMContentLoaded", function () {
   const scene = document.querySelector("a-scene")
 
