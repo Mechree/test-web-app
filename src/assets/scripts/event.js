@@ -7,6 +7,21 @@ document.addEventListener("DOMContentLoaded", function () {
       const elementEvent = document.getElementById("event")
       if (elementEvent) {
         console.log("Event entity found!")
+        // Set scale, primitive and color.
+        entity.setAttribute("scale", {
+          x: 10,
+          y: 10,
+          z: 10,
+        })
+        elementEvent.setAttribute("primitive", "box")
+        elementEvent.setAttribute("material", {
+          color: "red",
+        })
+        // Place entity slightly north of user position
+        elementEvent.setAttribute("gps-entity-place", {
+          latitude: 39.65210693451366 + 0.001,
+          longitude: -84.12979108861603,
+        })
       } else {
         console.error("Event entity not found!")
       }
