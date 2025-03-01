@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Event entity found!")
         // Set scale, primitive and color.
         elementEvent.setAttribute("geometry", {
-          primtive: "box",
+          primitive: "box",
           width: 8,
           height: 8,
           depth: 8,
