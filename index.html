@@ -13,11 +13,12 @@
 
 <body>
   <a-scene>
+    <a-camera gps-camera rotation-reader></a-camera>
 
     <!-- Event Entity -->
     <a-entity
      id="event"
-     geoemetry="primitive: box"
+     geometry="primitive: box"
      material="color: blue">
 
       <a-text

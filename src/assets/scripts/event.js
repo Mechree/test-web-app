@@ -14,12 +14,11 @@ document.addEventListener("DOMContentLoaded", function () {
           height: 8,
           depth: 8,
         })
-        elementEvent.setAttribute()
         elementEvent.setAttribute("material", {
           color: "red",
         })
         // Place entity slightly north of user position
-        elementEvent.setAttribute("gps-entity-place", {
+        elementEvent.setAttribute("gps-new-entity-place", {
           latitude: 39.65210693451366,
           longitude: -84.12979108861603,
         })
