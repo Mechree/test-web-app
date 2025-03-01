@@ -14,14 +14,17 @@ document.addEventListener("DOMContentLoaded", function () {
           height: 8,
           depth: 8,
         })
-        elementEvent.setAttribute("material", {
-          color: "red",
-        })
+
         // Place entity slightly north of user position
         elementEvent.setAttribute("gps-new-entity-place", {
           latitude: 39.65210693451366,
           longitude: -84.12979108861603,
         })
+        // Log position
+        console.log(
+          "Event Position:",
+          elementEvent.getAttribute("gps-new-entity-place")
+        )
       } else {
         console.error("Event entity not found!")
       }
