@@ -1,28 +1,30 @@
 // Waits for document to load and then Links the scene and arrow to variables by finding the scene and arrow entities in the HTML Documents
 document.addEventListener("DOMContentLoaded", function () {
   const scene = document.querySelector("a-scene")
-
-  if (scene) {
-    scene.addEventListener("loaded", function () {
-      const elementArrow = document.getElementById("arrow")
-      console.log("Arrow entity:", elementArrow)
-
-      // If arrow entity is found, modifying it
-      if (elementArrow) {
-        elementArrow.object3D.rotation.set(
-          THREE.MathUtils.degToRad(0),
-          THREE.MathUtils.degToRad(0),
-          THREE.MathUtils.degToRad(0)
-        )
-        // Adds 360 degrees to the x-axis
-        // elementArrow.object3D.rotation.x += 2 * Math.PI
-      } else {
-        console.error("Arrow entity not found!")
-      }
-    })
-  } else {
-    console.error("Scene element not found!")
+  const camera = document.querySelector("[gps-new-camera]")
+  const arrow = document.getElementById("arrow")
+  const eventEntity = document.getElementById("event")
+  const arrowTxt = document.getElementById("arrowTxt")
+  // Check for entities
+  if (!scene || !camera || !arrow || !eventEntity) {
+    console.error("arrow.js: Entity missing in <a-scene>!")
+    return
   }
+
+  scene.addEventListener("loaded", function () {
+    // This function updates the arrow entity to point toward the event location and displays the approximate distance to the user.
+    function updateArrow() {
+      // User and event coords in lat/long
+      const userPos = camera.components["gps-new-camera"].currentCoords
+      const eventCoords = eventEntity.getAttribute("gps-new-entity-place")
+
+      // Check for user and event positions
+      if (!userPos || !eventCoords) {
+        console.error("arrow.js: Cannot find user or event position!")
+        return
+      }
+    }
+  })
 })
 
 // Custom component that updates users position in the world using THREE.js
