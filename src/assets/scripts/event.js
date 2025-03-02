@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
           latitude: 39.65210693451366 + 0.001,
           longitude: -84.12979108861603,
         })
+
         // Log position
         console.log(
           "Event Position:",
