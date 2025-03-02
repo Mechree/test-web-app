@@ -1,3 +1,5 @@
+// Event.js Script
+
 // Wait for the document to load, link scene and event entity to their respective variables, place event location via coordinates, and add some sort of marker.
 document.addEventListener("DOMContentLoaded", function () {
   const scene = document.querySelector("a-scene")
@@ -7,7 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const elementEvent = document.getElementById("event")
 
       if (elementEvent) {
-        console.log("Event entity found!")
+        // console.log("Event entity found!")
+
         // Set scale, primitive and color.
         elementEvent.setAttribute("geometry", {
           primitive: "box",

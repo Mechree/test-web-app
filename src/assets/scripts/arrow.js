@@ -1,58 +1,48 @@
-// // Waits for document to load and then Links the scene and arrow to variables by finding the scene and arrow entities in the HTML Documents
-// document.addEventListener("DOMContentLoaded", function () {
-//   const scene = document.querySelector("a-scene")
-//   const camera = document.querySelector("[gps-new-camera]")
-//   const arrow = document.getElementById("arrow")
-//   const eventEntity = document.getElementById("event")
-//   const arrowTxt = document.getElementById("arrowTxt")
+// Arrow.js Script
 
-//   // Check for entities
-//   if (!scene || !camera || !arrow || !eventEntity || !arrowTxt) {
-//     console.error("arrow.js: Entity missing in <a-scene>!")
-//     return
-//   }
+// Waits for document to load and then Links the scene and arrow to variables by finding the scene and arrow entities in the HTML Documents
+document.addEventListener("DOMContentLoaded", function () {
+  const scene = document.querySelector("a-scene")
 
-//   scene.addEventListener("loaded", function () {
-//     // This function updates the arrow entity to point toward the event location and displays the approximate distance to the user.
-//     tick: function updateArrow() {
+  if (!scene) {
+    console.error("arrow.js: Scene missing!")
+    return
+  }
+  const camera = document.querySelector("[gps-new-camera]")
+  const arrow = document.getElementById("arrow")
+  const eventEntity = document.getElementById("event")
+  const arrowTxt = document.getElementById("eventTxt")
 
-//     }
-//   })
-// })
+  // Check for entities
+  if (!camera || !arrow || !eventEntity || !arrowTxt) {
+    console.error("arrow.js: Entity missing from Scene>!")
+    return
+  }
 
-// Custom component that updates users position in the world using THREE.js
-AFRAME.registerComponent("rotation-reader", {
-  tick: (function () {
-    var position = new THREE.Vector3()
-    var quaternion = new THREE.Quaternion()
+  // Custom component to update the arrow's direction
+  AFRAME.registerComponent("arrow-pointer", {
+    tick: function () {
+      // Get the world positions of the camera and event entity
+      const cameraPos = new THREE.Vector3()
+      const eventPos = new THREE.Vector3()
+      camera.object3D.getWorldPosition(cameraPos)
+      eventEntity.object3D.getWorldPosition(eventPos)
 
-    return function () {
-      this.el.object3D.getWorldPosition(position)
-      this.el.object3D.getWorldQuaternion(quaternion)
-    }
-  })(),
+      // Have arrow point to the event position.
+      arrow.object3D.lookAt(eventPos)
+    },
+  })
+
+  // Attach the arrow-pointer component to the arrow entity.
+  arrow.setAttribute("arrow-pointer", "")
 })
 
-AFRAME.registerComponent("update-arrow", {
-  tick: function () {
-    const camera = document.querySelector("[gps-new-camera]")
-    const arrow = document.getElementById("arrow")
-    const eventEntity = document.getElementById("event")
-    // User and event coords in lat/long
-    var userCoords = camera.components["gps-new-camera"].currentCoords
-    var eventCoords = eventEntity.getAttribute("gps-new-entity-place")
+// object3d.getWorldPosition returns a vector of that 3d object
+// lookAt(object3d.getWorldPosition) look at that vector of the 3d object
 
-    // Check for user and event positions
-    if (!userCoords || !eventCoords) {
-      console.error("arrow.js: Cannot find user or event position!")
-      return
-    }
-    console.log("eventPos:", eventCoords)
-    console.log("userPos:", userCoords)
+// TICK update arrow to point to event
+// Link arrow, scene, event
+// Get event world position
+// apply lookAt(event world pos) to arrow
 
-    // Get vector of event
-    var eventVector = eventEntity.object3D.getWorldPosition
-    // Point arrow to event using 3d vector
-    arrow.object3D.lookAt(eventVector)
-  },
-})
+// Event text
