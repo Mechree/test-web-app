@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const camera = document.querySelector("[gps-new-camera]")
   const arrow = document.getElementById("arrow")
   const eventEntity = document.getElementById("event")
-  const arrowTxt = document.getElementById("eventTxt")
+  const arrowTxt = document.getElementById("eventxt")
 
   // Check for entities
   if (!camera || !arrow || !eventEntity || !arrowTxt) {
