@@ -35,6 +35,9 @@ AFRAME.registerComponent("rotation-reader", {
 
 AFRAME.registerComponent("update-arrow", {
   tick: function () {
+    const camera = document.querySelector("[gps-new-camera]")
+    const arrow = document.getElementById("arrow")
+    const eventEntity = document.getElementById("event")
     // User and event coords in lat/long
     var userCoords = camera.components["gps-new-camera"].currentCoords
     var eventCoords = eventEntity.getAttribute("gps-new-entity-place")
