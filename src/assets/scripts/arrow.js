@@ -23,6 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("arrow.js: Cannot find user or event position!")
         return
       }
+
+      console.log("eventPos:", eventCoords)
+      console.log("userPos:", userPos)
     }
   })
 })
