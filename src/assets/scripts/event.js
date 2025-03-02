@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
           longitude: -84.12979108861603,
         })
         // Place text at location
-        eventxt.setAttribute("gps=new-entity-place", {
+        eventxt.setAttribute("gps-new-entity-place", {
           latitude: 39.65210693451366 + 0.0001,
           longitude: -84.12979108861603,
         })
