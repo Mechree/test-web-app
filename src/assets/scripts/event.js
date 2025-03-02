@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", function () {
   if (scene) {
     scene.addEventListener("loaded", function () {
       const elementEvent = document.getElementById("event")
+      const eventxt = document.getElementById("eventxt")
+
       if (elementEvent) {
         console.log("Event entity found!")
         // Set scale, primitive and color.
@@ -20,7 +22,11 @@ document.addEventListener("DOMContentLoaded", function () {
           latitude: 39.65210693451366 + 0.001,
           longitude: -84.12979108861603,
         })
-
+        // Place text at location
+        eventxt.setAttribute("gps=new-entity-place", {
+          latitude: 39.65210693451366 + 0.0001,
+          longitude: -84.12979108861603,
+        })
         // Log position
         console.log(
           "Event Position:",
