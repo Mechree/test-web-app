@@ -21,7 +21,7 @@ window.addEventListener("gps-camera-update-position", function (e) {
   const rotationMatrix = new THREE.Matrix4().lookAt(
     eventEl.position,
     cameraEl.position,
-    arrowEl.up
+    cameraEl.up
   )
 
   // Convert the rotation matrix to a quaternion.
