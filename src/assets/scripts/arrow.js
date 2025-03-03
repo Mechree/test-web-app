@@ -1,7 +1,7 @@
 // arrow.js
 
 // Listen for GPS updates from the camera (emitted by gps-new-camera)
-window.addEventListener("gps-camera-update-position", function () {
+window.addEventListener("gps-camera-update-position", function (e) {
   const cameraEl = document.querySelector("[gps-new-camera]")
   const arrowEl = document.getElementById("arrow")
   const eventEl = document.getElementById("event")
@@ -29,7 +29,7 @@ window.addEventListener("gps-camera-update-position", function () {
   const rotationMatrix = new THREE.Matrix4().lookAt(
     new THREE.Vector3(0, 0, 0),
     direction,
-    cameraEl.up
+    up
   )
 
   // Convert the rotation matrix to a quaternion.
