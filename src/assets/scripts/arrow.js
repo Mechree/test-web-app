@@ -1,34 +1,42 @@
-// arrow.js
-
-// Listen for GPS updates from the camera (emitted by gps-new-camera)
-window.addEventListener("gps-camera-update-position", function (e) {
+window.addEventListener("gps-camera-update-position", () => {
   const cameraEl = document.querySelector("[gps-new-camera]")
   const arrowEl = document.getElementById("arrow")
   const eventEl = document.getElementById("event")
 
   if (!cameraEl || !arrowEl || !eventEl) {
+    console.error("arrow.js: Elements missing from scene!")
     return
   }
 
-  // Get the world positions of the camera and the event.
-  const cameraPos = new THREE.Vector3()
-  cameraEl.object3D.getWorldPosition(cameraPos)
-
+  // Get the event's world position.
   const eventPos = new THREE.Vector3()
   eventEl.object3D.getWorldPosition(eventPos)
 
-  // Create a rotation matrix from the origin (0,0,0) towards the local event direction.
-  const rotationMatrix = new THREE.Matrix4().lookAt(
-    eventEl.position,
-    cameraEl.position,
-    cameraEl.up
-  )
+  // Get the camera's world position.
+  const cameraPos = new THREE.Vector3()
+  cameraEl.object3D.getWorldPosition(cameraPos)
 
-  // Convert the rotation matrix to a quaternion.
-  const targetQuaternion = new THREE.Quaternion().setFromRotationMatrix(
-    rotationMatrix
-  )
+  // Calculate the direction from the camera to the event.
+  const direction = new THREE.Vector3().subVectors(eventPos, cameraPos)
 
-  // Apply the quaternion to the arrow so it points correctly in camera space.
-  arrowEl.object3D.quaternion.copy(targetQuaternion)
+  // Project the direction onto the XZ plane (if you want a 2D planar rotation).
+  direction.y = 0
+
+  // Check if the direction is valid (not zero length).
+  if (direction.lengthSq() < 0.0001) {
+    return
+  }
+
+  // Normalize the direction vector.
+  direction.normalize()
+
+  // Create a target point using the direction.
+  const targetPos = new THREE.Vector3().addVectors(cameraPos, direction)
+
+  // Rotate the arrow so it faces the target point.
+  // This will internally calculate a quaternion for you.
+  arrowEl.object3D.lookAt(targetPos)
+
+  // Optionally, if you need to adjust for a specific local rotation offset,
+  // you can modify the arrow's rotation here.
 })
