@@ -17,7 +17,7 @@ window.addEventListener("gps-camera-update-position", () => {
   cameraEl.object3D.getWorldPosition(cameraPos)
 
   // Calculate the direction from the camera to the event.
-  const direction = new THREE.Vector3().subVectors(eventPos, cameraPos)
+  const direction = new THREE.Vector3().subVectors(cameraPos, eventPos)
 
   // Project the direction onto the XZ plane (if you want a 2D planar rotation).
   direction.y = 0
