@@ -27,7 +27,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const eventPos = new THREE.Vector3()
       camera.object3D.getWorldPosition(cameraPos)
       eventEntity.object3D.getWorldPosition(eventPos)
-
+      console.log("Camera pos:", cameraPos)
+      console.log("Event pos:", eventPos)
       // Have arrow point to the event position.
       arrow.object3D.lookAt(eventPos)
     },
