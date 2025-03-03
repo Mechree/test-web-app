@@ -6,6 +6,7 @@ window.addEventListener("gps-camera-update-position", () => {
   const eventEl = document.getElementById("event")
 
   if (!cameraEl || !arrowEl || !eventEl) {
+    console.error("arrow.js: Elements missing from scene!")
     return
   }
 
@@ -27,7 +28,7 @@ window.addEventListener("gps-camera-update-position", () => {
 
   // Calculate the yaw angle relative to the camera's forward vector.
   // In camera local space, forward is (0, 0, -1).
-  const angle = Math.atan2(localEventPos.x, -localEventPos.z)
+  const angle = Math.atan2(-localEventPos.z, localEventPos.x)
 
   // Create an Euler rotation around the Y axis.
   const euler = new THREE.Euler(0, angle, 0)
