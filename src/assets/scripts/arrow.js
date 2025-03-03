@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Camera pos:", cameraPos)
       console.log("Event pos:", eventPos)
       // Have arrow point to the event position.
+      console.log("LookAt pos; ", arrow.object3D.lookAt(eventPos))
       arrow.object3D.lookAt(eventPos)
     },
   })
