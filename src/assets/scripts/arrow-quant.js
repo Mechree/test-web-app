@@ -38,5 +38,5 @@ window.addEventListener("gps-camera-update-position", function (e) {
   )
 
   // Apply the quaternion to the arrow so it points correctly in camera space.
-  // arrowEl.object3D.quaternion.copy(targetQuaternion)
+  arrowEl.object3D.quaternion.copy(targetQuaternion)
 })
