@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const angleDegrees = THREE.Math.radToDeg(angleRadians)
 
       // Apply the rotation using Euler angles, preserving the arrow's position
-      arrow.setAttribute("rotation", { x: 0, y: angleDegrees, z: 0 })
+      arrow.setAttribute("rotation", { x: 0, y: 1.6, z: angleDegrees })
     },
   })
 })
