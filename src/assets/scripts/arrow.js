@@ -17,7 +17,7 @@ window.addEventListener("gps-camera-update-position", () => {
   cameraEl.object3D.getWorldPosition(cameraPos)
 
   // Calculate the direction from the camera to the event.
-  const direction = new THREE.Vector3().subVectors(cameraPos, eventPos)
+  const direction = new THREE.Vector3().subVectors(eventPos, cameraPos)
 
   // Project the direction onto the XZ plane (if you want a 2D planar rotation).
   direction.y = 0
@@ -37,6 +37,6 @@ window.addEventListener("gps-camera-update-position", () => {
   // This will internally calculate a quaternion for you.
   arrowEl.object3D.lookAt(targetPos)
 
-  // Optionally, if you need to adjust for a specific local rotation offset,
-  // you can modify the arrow's rotation here.
+  // Adjust for the arrow's local rotation offset (for example, rotate by 90 degrees on Y axis)
+  arrowEl.object3D.rotateY(THREE.Math.degToRad(90))
 })
