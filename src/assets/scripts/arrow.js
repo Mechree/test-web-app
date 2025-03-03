@@ -3,10 +3,10 @@
 // Listen for GPS updates from the camera (emitted by gps-new-camera)
 window.addEventListener("gps-camera-update-position", function (e) {
   const cameraEl = document.querySelector("[gps-new-camera]")
-  const arrowEl = document.getElementById("arrow")
+  const pivotEl = document.getElementById("arrowPivot")
   const eventEl = document.getElementById("event")
 
-  if (!cameraEl || !arrowEl || !eventEl) {
+  if (!cameraEl || !pivotEl || !eventEl) {
     return
   }
 
@@ -38,5 +38,5 @@ window.addEventListener("gps-camera-update-position", function (e) {
   )
 
   // Apply the quaternion to the arrow so it points correctly in camera space.
-  arrowEl.object3D.quaternion.copy(targetQuaternion)
+  pivotEl.object3D.quaternion.copy(targetQuaternion)
 })

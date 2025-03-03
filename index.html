@@ -18,8 +18,7 @@
      renderer='antialias: true; alpha: true'>
     
       <a-camera 
-      gps-new-camera 
-      rotation-reader>
+      gps-new-camera>
           <!--Arrow Entity will point to Event entity -->
           <a-entity
           id="userPOV">
@@ -32,8 +31,12 @@
             color="white" 
             position="0 -1 -2.7">
             </a-text>
-    
+            
             <a-entity
+            id="arrowPivot"
+            position="0 -.5 0">
+
+              <a-entity
               id="arrow"
               position = "0 -.5 0"
               scale = ".2 .2 .2"
@@ -52,10 +55,9 @@
                   color="yellow" 
                   shadow="receive: false">
                 </a-box>
-    
               </a-triangle>
             </a-entity>
-    
+          </a-entity>
         </a-entity>
       </a-camera>
 
