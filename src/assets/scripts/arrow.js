@@ -38,5 +38,5 @@ window.addEventListener("gps-camera-update-position", () => {
   arrowEl.object3D.lookAt(targetPos)
 
   // Adjust for the arrow's local rotation offset (for example, rotate by 90 degrees on Y axis)
-  arrowEl.object3D.rotateY(THREE.Math.degToRad(90))
+  arrowEl.object3D.rotateZ(THREE.Math.degToRad(90))
 })
