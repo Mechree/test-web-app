@@ -17,19 +17,11 @@ window.addEventListener("gps-camera-update-position", function (e) {
   const eventPos = new THREE.Vector3()
   eventEl.object3D.getWorldPosition(eventPos)
 
-  // Transform the event's world position into the camera's local coordinate system.
-  const localEventPos = eventPos.clone()
-  cameraEl.object3D.worldToLocal(localEventPos)
-
-  // The direction from the camera (origin in local space) to the event.
-  const direction = localEventPos.normalize()
-
   // Create a rotation matrix from the origin (0,0,0) towards the local event direction.
-  const up = new THREE.Vector3(0, 0, 1) // Use world up
   const rotationMatrix = new THREE.Matrix4().lookAt(
-    new THREE.Vector3(0, 0, 0),
-    direction,
-    up
+    eventEl.position,
+    arrowEl.position,
+    arrowEl.up
   )
 
   // Convert the rotation matrix to a quaternion.
