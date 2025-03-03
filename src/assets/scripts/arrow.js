@@ -1,45 +1,41 @@
-// Arrow.js Script
+// arrow.js
 
-// Waits for document to load and then Links the scene and arrow to variables by finding the scene and arrow entities in the HTML Documents
-document.addEventListener("DOMContentLoaded", function () {
-  const scene = document.querySelector("a-scene")
+// Listen for GPS updates from the camera (emitted by gps-new-camera)
+window.addEventListener("gps-camera-update-position", function (e) {
+  const cameraEl = document.querySelector("[gps-new-camera]")
+  const arrowEl = document.getElementById("arrow")
+  const eventEl = document.getElementById("event")
 
-  if (!scene) {
-    console.error("arrow.js: Scene missing!")
-    return
-  }
-  const camera = document.querySelector("[gps-new-camera]")
-  const arrow = document.getElementById("arrow")
-  const eventEntity = document.getElementById("event")
-  const arrowTxt = document.getElementById("arrowTxt")
-
-  // Check for entities
-  if (!camera || !arrow || !eventEntity || !arrowTxt) {
-    console.error("arrow.js: Entity missing from Scene>!")
+  if (!cameraEl || !arrowEl || !eventEl) {
     return
   }
 
-  // Custom component to update the arrow's direction
-  AFRAME.registerComponent("arrow-pointer", {
-    tick: function () {
-      // Get world positions of camera and event entity
-      const cameraPos = new THREE.Vector3()
-      const eventPos = new THREE.Vector3()
-      camera.object3D.getWorldPosition(cameraPos)
-      eventEntity.object3D.getWorldPosition(eventPos)
+  // Get the world positions of the camera and the event.
+  const cameraPos = new THREE.Vector3()
+  cameraEl.object3D.getWorldPosition(cameraPos)
 
-      // Compute a direction vector from the camera to the event
-      const dx = eventPos.x - cameraPos.x
-      const dz = eventPos.z - cameraPos.z
+  const eventPos = new THREE.Vector3()
+  eventEl.object3D.getWorldPosition(eventPos)
 
-      // Calculate the yaw in radians
-      const angleRadians = Math.atan2(dx, dz)
+  // Compute the direction vector from the camera to the event.
+  const direction = new THREE.Vector3()
+    .subVectors(eventPos, cameraPos)
+    .normalize()
 
-      // Convert the angle to degrees
-      const angleDegrees = THREE.Math.radToDeg(angleRadians)
+  // Build a rotation matrix that "looks" along the computed direction.
+  // Since the arrow is a child of the camera, we create the matrix from the origin.
+  const up = new THREE.Vector3(0, 1, 0) // World up vector.
+  const rotationMatrix = new THREE.Matrix4().lookAt(
+    new THREE.Vector3(0, 0, 0),
+    direction,
+    up
+  )
 
-      // Apply the rotation using Euler angles, preserving the arrow's position
-      arrow.setAttribute("rotation", { x: 0, y: 1.6, z: angleDegrees })
-    },
-  })
+  // Convert the rotation matrix into a quaternion.
+  const targetQuaternion = new THREE.Quaternion().setFromRotationMatrix(
+    rotationMatrix
+  )
+
+  // Apply the quaternion to the arrow's object3D.
+  arrowEl.object3D.quaternion.copy(targetQuaternion)
 })
