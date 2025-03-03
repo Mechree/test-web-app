@@ -25,7 +25,7 @@ window.addEventListener("gps-camera-update-position", function (e) {
   const direction = localEventPos.normalize()
 
   // Create a rotation matrix from the origin (0,0,0) towards the local event direction.
-  const up = new THREE.Vector3(0, 1, 0) // Use world up
+  const up = new THREE.Vector3(0, 0, 1) // Use world up
   const rotationMatrix = new THREE.Matrix4().lookAt(
     new THREE.Vector3(0, 0, 0),
     direction,
@@ -38,5 +38,5 @@ window.addEventListener("gps-camera-update-position", function (e) {
   )
 
   // Apply the quaternion to the arrow so it points correctly in camera space.
-  arrowEl.object3D.quaternion.rotateTowards(targetQuaternion, 1)
+  arrowEl.object3D.quaternion.copy(targetQuaternion)
 })
