@@ -22,29 +22,24 @@ document.addEventListener("DOMContentLoaded", function () {
   // Custom component to update the arrow's direction
   AFRAME.registerComponent("arrow-pointer", {
     tick: function () {
-      // Get the world positions of the camera and event entity
+      // Get world positions of camera and event entity
       const cameraPos = new THREE.Vector3()
       const eventPos = new THREE.Vector3()
       camera.object3D.getWorldPosition(cameraPos)
       eventEntity.object3D.getWorldPosition(eventPos)
-      console.log("Camera pos:", cameraPos)
-      console.log("Event pos:", eventPos)
-      // Have arrow point to the event position.
-      console.log("LookAt pos; ", arrow.object3D.lookAt(eventPos))
-      arrow.object3D.lookAt(eventPos)
+
+      // Compute a direction vector from the camera to the event
+      const dx = eventPos.x - cameraPos.x
+      const dz = eventPos.z - cameraPos.z
+
+      // Calculate the yaw in radians
+      const angleRadians = Math.atan2(dx, dz)
+
+      // Convert the angle to degrees
+      const angleDegrees = THREE.Math.radToDeg(angleRadians)
+
+      // Apply the rotation using Euler angles, preserving the arrow's position
+      arrow.setAttribute("rotation", { x: 0, y: angleDegrees, z: 0 })
     },
   })
-
-  // Attach the arrow-pointer component to the arrow entity.
-  arrow.setAttribute("arrow-pointer", "")
 })
-
-// object3d.getWorldPosition returns a vector of that 3d object
-// lookAt(object3d.getWorldPosition) look at that vector of the 3d object
-
-// TICK update arrow to point to event
-// Link arrow, scene, event
-// Get event world position
-// apply lookAt(event world pos) to arrow
-
-// Event text
