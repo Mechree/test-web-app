@@ -1,4 +1,4 @@
-AFRAME.registerComponent("arrow-track", {
+AFRAME.registerComponent("arrow-pointer", {
   init: function () {
     this.targetEl = document.querySelector("#event") // The entity we want to point toward
     this.arrowEl = this.el // The entity doing the pointing
