@@ -37,3 +37,21 @@ document.addEventListener("DOMContentLoaded", function () {
     console.error("Scene element not found!")
   }
 })
+
+AFRAME.registerComponent("rotation-tick", {
+  init: function () {
+    this.rotationTmp = { x: 0, y: 0, z: 0 } // Properly initialize rotationTmp
+  },
+  tick: function () {
+    var el = this.el
+    var rotation = el.getAttribute("rotation")
+
+    // Increment the rotation
+    this.rotationTmp.x = rotation.x + 0.1
+    this.rotationTmp.y = rotation.y + 0.1
+    this.rotationTmp.z = rotation.z + 0.1
+
+    // Apply new rotation
+    el.setAttribute("rotation", this.rotationTmp)
+  },
+})
