@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 })
 
+// This component rotates the box at every frame tick (might add limiter to conserve resources)
 AFRAME.registerComponent("rotation-tick", {
   init: function () {
     this.rotationTmp = { x: 0, y: 0, z: 0 } // Properly initialize rotationTmp
