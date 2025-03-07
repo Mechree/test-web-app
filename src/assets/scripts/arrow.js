@@ -21,17 +21,23 @@ AFRAME.registerComponent("arrow-pointer", {
     const targetDir = new THREE.Vector3().subVectors(targetPos, cameraPos)
     this.cameraEl.object3D.worldToLocal(targetDir) // Converts to camera's local coordinates
 
-    // Compute rotation using lookAt()
-    const quaternion = new THREE.Quaternion()
-    const matrix = new THREE.Matrix4()
-    matrix.lookAt(
+    // The direction from the camera (origin in local space) to the event.
+    const direction = targetDir.normalize()
+
+    // Create a rotation matrix from the origin (0,0,0) towards the local event direction.
+    const up = new THREE.Vector3(0, 1, 0) // Use world up
+    const rotationMatrix = new THREE.Matrix4().lookAt(
       new THREE.Vector3(0, 0, 0),
-      targetDir,
-      new THREE.Vector3(0, 1, 0)
+      direction,
+      up
     )
-    quaternion.setFromRotationMatrix(matrix)
+
+    // Convert the rotation matrix to a quaternion.
+    const targetQuaternion = new THREE.Quaternion().setFromRotationMatrix(
+      rotationMatrix
+    )
 
     // Apply rotation (in local space)
-    this.arrowEl.object3D.quaternion.copy(quaternion)
+    this.arrowEl.object3D.quaternion.copy(targetQuaternion)
   },
 })
