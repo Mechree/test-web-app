@@ -26,8 +26,10 @@ window.addEventListener("gps-camera-update-position", function (e) {
 
   // Create a rotation matrix from the origin (0,0,0) towards the local event direction.
   const up = new THREE.Vector3(0, 1, 0) // Use world up
+
+  // (eye, target, up)
   const rotationMatrix = new THREE.Matrix4().lookAt(
-    new THREE.Vector3(0, 0, 0),
+    new THREE.Vector3(cameraEl.getWorldPosition()),
     direction,
     up
   )
