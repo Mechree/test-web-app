@@ -2,7 +2,7 @@ AFRAME.registerComponent("arrow-track", {
   init: function () {
     this.targetEl = document.querySelector("#event") // The entity we want to point toward
     this.arrowEl = this.el // The entity doing the pointing
-    this.cameraEl = document.querySelector("a-camera") // POV using the user's camera
+    this.cameraEl = document.querySelector("#cam") // POV using the user's camera
   },
 
   // With every frame update, 90ms, rotate toward the targetEL
