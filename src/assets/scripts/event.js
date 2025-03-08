@@ -48,9 +48,9 @@ AFRAME.registerComponent("rotation-tick", {
     var rotation = el.getAttribute("rotation")
 
     // Increment the rotation
-    this.rotationTmp.x = rotation.x + 0.1
-    this.rotationTmp.y = rotation.y + 0.1
-    this.rotationTmp.z = rotation.z + 0.1
+    this.rotationTmp.x = rotation.x + 0.2
+    this.rotationTmp.y = rotation.y + 0.2
+    this.rotationTmp.z = rotation.z + 0.2
 
     // Apply new rotation
     el.setAttribute("rotation", this.rotationTmp)
