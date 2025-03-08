@@ -19,7 +19,7 @@ window.addEventListener("gps-camera-update-position", function (e) {
   cameraEl.object3D.worldToLocal(localEventPos)
 
   // Compute the angle.
-  const angleRad = Math.atan2(targetLocalPos.y, targetLocalPos.x)
+  const angleRad = Math.atan2(localEventPos.y, localEventPos.x)
 
   //Convert to degrees and correct arrow direction
   var angleDeg = (180 / 3.1415926535) * angleRad + 245
