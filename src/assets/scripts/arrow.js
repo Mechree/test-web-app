@@ -23,7 +23,7 @@ AFRAME.registerComponent("arrow-pointer", {
 
     // Convert target position to the camera's local space
     const targetDir = new THREE.Vector3().subVectors(targetPos, cameraPos)
-    camera.worldToLocal(targetDir) // Converts to camera's local coordinates
+    this.cameraEl.object3D.worldToLocal(targetDir)
 
     const angle = Math.atan2(targetDir.x, -targetDir.z) // Flip Z for correct orientation
 
