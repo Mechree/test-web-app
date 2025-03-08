@@ -33,14 +33,36 @@
             color="white" 
             position="0 -1 -2.7">
             </a-text>
+            
+            <a-entity
+            id="arrowPivot"
+            position="0 -.5 0">
+
+              <a-entity
+              arrow-pointer
+              id="arrow"
+              scale = ".2 .2 .2"
+              light="type: hemisphere; intensity: 2.0">
+    
+              <a-triangle
+                position="0 1.7 -3" 
+                color="yellow"
+                scale="0.2 0.2 0.2"
+                depth=".1">
+    
+                <a-box
+                  scale=".2 .8 .4" 
+                  depth=".1" 
+                  position="0 -.89 0" 
+                  color="yellow" 
+                  shadow="receive: false">
+                </a-box>
+              </a-triangle>
+            </a-entity>
+          </a-entity>
         </a-entity>
       </a-camera>
 
-      <!-- Arrow image -->
-      <a-entity id="hud">
-        <a-image id="arrow" src="./src/assets/images/arrow.png" scale="0.5 0.5 1" position="0 -0.5 -1" arrow-track></a-image>
-      </a-entity>
-      
       <!-- Event Entity -->
       <a-entity
       rotation-tick
