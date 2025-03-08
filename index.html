@@ -13,13 +13,12 @@
 
   <body>
     <a-scene
-     vr-mode-ui='enabled: false' 
-     arjs='sourceType: webcam; debugUIEnabled: false' 
-     renderer='antialias: true; alpha: true'>
+     vr-mode-ui="enabled: false" 
+     arjs="sourceType: webcam; debugUIEnabled: false" 
+     renderer="antialias: true; alpha: true">
     
       <a-camera 
       id = "cam"
-      rotation-reader
       gps-new-camera>
           <!--Arrow Entity will point to Event entity -->
           <a-entity
@@ -37,13 +36,13 @@
               <a-entity
               arrow-pointer
               id="arrow"
-              scale = ".2 .2 .2"
+              scale=".15 .15 .2"
+              position="0 -.7 -.5" 
               light="type: hemisphere; intensity: 2.0">
     
               <a-triangle
                 position="0 1.7 -3" 
                 color="yellow"
-                scale="0.2 0.2 0.2"
                 depth=".1">
     
                 <a-box

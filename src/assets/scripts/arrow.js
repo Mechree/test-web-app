@@ -17,7 +17,7 @@ AFRAME.registerComponent("arrow-pointer", {
 
     const angleRad = Math.atan2(targetLocalPos.y, targetLocalPos.x)
     // console.log(angleRad)
-    var angleDeg = (180 / 3.1415926535) * angleRad + 245
+    var angleDeg = (180 / 3.1415926535) * angleRad
     // angleDeg = (angleDeg + 360) % 360
 
     // console.log(angleDeg)
