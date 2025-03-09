@@ -22,3 +22,7 @@ window.addEventListener("load", () => {
     clearInterval(check)
   })
 })
+
+AFRAME.registerComponent("distance", {
+  tick: function () {},
+})
