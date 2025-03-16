@@ -1,3 +1,6 @@
+// arrow.js
+// This script adds a custom component that changes rotation of the arrow entity based on the users camera POV and the target (event) location. 
+ 
 AFRAME.registerComponent("arrow-pointer", {
   init: function () {
     this.arrowEl = this.el // The entity doing the pointing (tagged element)

@@ -1,4 +1,5 @@
 // distance-tick.js
+// This script creates a customized component for an AFRAME entity where the distance between a user and their target (event) is populated into the text attribute of another element (arrow) with every frame update.
 
 AFRAME.registerComponent("distance-calc", {
   init: function () {

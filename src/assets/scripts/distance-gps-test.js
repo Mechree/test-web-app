@@ -1,4 +1,6 @@
 // distance-gps.js
+// This script creates a customized component for an AFRAME entity where the distance between a user and their target (event) is populated into the text attribute of another element (arrow) when the users GPS position is updated via the camera component.
+// Currently does not work
 document.addEventListener("DOMContentLoaded", function () {
   // Listen for GPS updates from the camera (emitted by gps-new-camera)
   window.addEventListener("gps-camera-update-position", function (e) {
