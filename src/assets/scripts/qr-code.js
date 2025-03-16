@@ -23,11 +23,15 @@ var options = {
 const webPage = "https://mechree.github.io/test-web-app/"
 
 // Location data
-var latitude = 39.65210693451366 + 0.001
-var longitude = -84.12979108861603
+var lat = 39.65210693451366 + 0.001
+var lng = -84.12979108861603
 
-QRCode.toFile(filePath, webPage, options, function(err)
+// Combined url
+const url = `${webPage}?lat=${lat}&lng=${lng}`
+
+// Save QRCode as a file 
+QRCode.toFile(filePath, url, options, function(err)
 {
   if (err) throw err
-  console.log('done')
+  console.log('QRCode generated.')
 })
