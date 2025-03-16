@@ -3,20 +3,20 @@
 // Listen for GPS updates from the camera (emitted by gps-new-camera)
 window.addEventListener("gps-camera-update-position", function (e) {
   const cameraEl = document.querySelector("[gps-new-camera]")
-  const eventEl = document.getElementById("event")
+  const targetEl = document.getElementById("#event")
   const arrowEl = document.getElementById("arrow")
 
-  if (!cameraEl || !arrowEl || !eventEl) {
+  if (!cameraEl || !arrowEl || !targetEl) {
     return
   }
 
   // World position of event (target)
   const targetWorldPos = new THREE.Vector3()
-  this.targetEl.object3D.getWorldPosition(targetWorldPos)
+  targetEl.object3D.getWorldPosition(targetWorldPos)
 
   // World position of camera
   const cameraPos = new THREE.Vector3()
-  this.cameraEl.object3D.getWorldPosition(cameraPos)
+  cameraEl.object3D.getWorldPosition(cameraPos)
 
   // Get manhattan distance from camera to target
   let dist
@@ -26,5 +26,5 @@ window.addEventListener("gps-camera-update-position", function (e) {
     "Your event is this way.\n Distance: " + dist.toString(dist) + "m" // Combine dist and text
 
   // Update arrowText
-  this.arrowText.setAttribute("value", distTxt)
+  arrowEl.setAttribute("value", distTxt)
 })
