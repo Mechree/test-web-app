@@ -1,6 +1,5 @@
 // url-params.js
-// This script allows the webpage to collect lattitude and longitude information from the url parameters after a user scans a QR code. 
-// Webpage
+// This script allows the webpage to collect lattitude and longitude information from the url parameters after a user scans a QR code.
 
 // const webPage = "https://mechree.github.io/test-web-app/"
 const webPage = document.URL
@@ -14,7 +13,7 @@ var lng = -84.12979108861603
 const url = `${webPage}?lat=${lat}&lng=${lng}`
 
 // Module
-var urlMod = require('url')
+var urlMod = require("url")
 
 // Query url and return object
 var parse = urlMod.parse(url, true)
