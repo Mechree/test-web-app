@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Place entity slightly north of user position
         elementEvent.setAttribute("gps-new-entity-place", {
-          latitude: 39.77951268936278,
-          longitude: -84.06404559004493,
+          latitude: 39.65210693451366 + 0.001,
+          longitude: -84.12979108861603,
         })
         // Log position
         console.log(
