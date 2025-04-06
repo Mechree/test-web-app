@@ -23,8 +23,10 @@
     <a-scene
      vr-mode-ui="enabled: false" 
      arjs="sourceType: webcam; debugUIEnabled: false" 
-     renderer="antialias: true; alpha: true">
-    
+     renderer="antialias: true; alpha: true"
+     cursor="rayOrigin: mouse;"
+     raycaster="objects: .clickable">
+
       <a-camera 
       id = "cam"
       gps-new-camera>
@@ -69,7 +71,7 @@
 
       <!-- Event Entity -->
       <a-entity
-      cursor
+      class="clickable"
       click-display-info
       rotation-tick
       id="event"
