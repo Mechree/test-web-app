@@ -6,7 +6,8 @@ AFRAME.registerComponent("click-display-info", {
     var el = this.el
     var currColor = this.el.getAttribute("color")
     this.el.addEventListener("click", this.onClick.bind(this)) // Bind click event to element
-    console.log(currColor)
+    // console.log(el.getAttribute("color"))
+    console.log(`The ${this.el} entity is clickable.`)
   },
 
   // On click change color of event entity and display information text
