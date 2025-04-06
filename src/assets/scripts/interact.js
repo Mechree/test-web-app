@@ -6,7 +6,7 @@ AFRAME.registerComponent("click-display-info", {
     var data = this.data
     var el = this.el
     this.el.addEventListener("click", function (evt) {
-      console.log(`Display-info is attached to ${el} !`)
+      console.log(`Display-info is attached to ${el.id} !`)
     })
   },
 })
