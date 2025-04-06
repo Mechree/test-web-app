@@ -1,100 +1,101 @@
 <!DOCTYPE html>
 <html>
-
   <head>
     <title>AR.js A-Frame Location-based</title>
-    
+
     <!-- Scripts for Dependencies -->
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
-    <script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
-    
+    <script
+      type="text/javascript"
+      src="https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js"
+    ></script>
+
     <!-- Custom Scripts -->
     <script src="./src/assets/scripts/url-params.js"></script>
     <script src="./src/assets/scripts/event.js"></script>
     <script src="./src/assets/scripts/arrow.js"></script>
     <script src="./src/assets/scripts/distance.js"></script>
     <script src="./src/assets/scripts/interact.js"></script>
-
   </head>
 
   <body>
     <a-scene
-     vr-mode-ui="enabled: false" 
-     arjs="sourceType: webcam; debugUIEnabled: false" 
-     renderer="antialias: true; alpha: true">
+      vr-mode-ui="enabled: false"
+      arjs="sourceType: webcam; debugUIEnabled: false"
+      renderer="antialias: true; alpha: true"
+    >
+      <a-camera id="cam" gps-new-camera>
+        <!--Cursor Entity-->
+        <a-entity
+          cursor="fuse: true; fuseTimeout: 100"
+          position="0 0 -1"
+          geometry="primitive: ring; radiusInner: 0.03; radiusOuter: 0.04"
+          material="color: green; shader: flat"
+        >
+        </a-entity>
 
-      <a-camera 
-      id = "cam"
-      gps-new-camera>
-
-      <!--Cursor Entity-->
-      <a-entity cursor="fuse: true; fuseTimeout: 100"
-      position="0 0 -1"
-      geometry="primitive: ring; radiusInner: 0.03; radiusOuter: 0.04"
-      material="color: green; shader: flat">
-      </a-entity>
-
-          <!--Arrow Entity will point to Event entity -->
-          <a-entity
-          id="userPOV">
-          
-            <a-text
+        <!--Arrow Entity will point to Event entity -->
+        <a-entity id="userPOV">
+          <a-text
             distance-calc
             id="arrowTxt"
-            value="Your event is this way." 
-            width="2" 
-            align="center" 
-            color="white" 
-            position="0 -.93 -2.7">
-            </a-text>
-          
-              <a-entity
-              arrow-pointer
-              id="arrow"
-              scale=".07 .07 .07"
-              position="0 -.2 -.5" 
-              light="type: hemisphere; intensity: 2.0">
-    
-              <a-triangle
-                position="0 1.7 -3" 
+            value="Your event is this way."
+            width="2"
+            align="center"
+            color="white"
+            position="0 -.93 -2.7"
+          >
+          </a-text>
+
+          <a-entity
+            arrow-pointer
+            id="arrow"
+            scale=".07 .07 .07"
+            position="0 -.2 -.5"
+            light="type: hemisphere; intensity: 2.0"
+          >
+            <a-triangle position="0 1.7 -3" color="yellow" depth=".1">
+              <a-box
+                scale=".2 .8 .4"
+                depth=".1"
+                position="0 -.89 0"
                 color="yellow"
-                depth=".1">
-    
-                <a-box
-                  scale=".2 .8 .4" 
-                  depth=".1" 
-                  position="0 -.89 0" 
-                  color="yellow" 
-                  shadow="receive: false">
-                </a-box>
-              </a-triangle>
-            </a-entity>
+                shadow="receive: false"
+              >
+              </a-box>
+            </a-triangle>
+          </a-entity>
         </a-entity>
-        
+
         <!-- Display Window Entity -->
-        <a-entity 
-          id= "displayWindow" 
-          toggle-entity position="1 0 -.5">
-            <a-plane 
+        <a-entity id="displayWindow" toggle-entity position=".2 0 -.1">
+          <a-plane
             id="display outline"
-            scale= "1.65 1.65 1.65" 
-            color="yellow" 
-            position = "3 -.89 -2.5">
+            scale="1.65 1.65 1.65"
+            color="yellow"
+            position="3 -.89 -2.5"
+          >
           </a-plane>
-        
-          <a-plane  
-            id="display-inline" 
-            scale="1.5 1.5 1.5" 
-            color="green" 
-            position = "4 0 -1.3">
-              <a-text 
-                id="display-info-text" 
-                value="Name: Place: Location:" 
-                color="white" align="left" 
-                scale=".5 .5 .5" 
-                width=5>
+
+          <a-plane
+            id="display-inline"
+            scale="1.5 1.5 1.5"
+            color="green"
+            position="4 0 -1.3"
+          >
+            <a-text
+              id="display-info-text"
+              value="Name: Place: Location:"
+              color="white"
+              align="left"
+              scale=".5 .5 .5"
+              width="5"
+            >
             </a-text>
           </a-plane>
         </a-entity>
@@ -102,13 +103,13 @@
 
       <!-- Event Entity -->
       <a-entity
-      class="clickable"
-      click-display-info
-      rotation-tick
-      id="event"
-      geometry="primitive: box"
-      material="color: blue">
-
+        class="clickable"
+        click-display-info
+        rotation-tick
+        id="event"
+        geometry="primitive: box"
+        material="color: blue"
+      >
         <a-text
           id="eventxt"
           value="EVENT NAME GOES HERE."
@@ -116,7 +117,8 @@
           align="center"
           color="red"
           position="0 2 1"
-          look-at="[gps-new-camera]">
+          look-at="[gps-new-camera]"
+        >
         </a-text>
       </a-entity>
     </a-scene>
