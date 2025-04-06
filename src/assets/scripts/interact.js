@@ -6,7 +6,7 @@ AFRAME.registerComponent("click-display-info", {
     var el = this.el
     var currColor = this.el.getAttribute("color")
     this.el.addEventListener("click", this.onClick.bind(this)) // Bind click event to element
-    // console.log(currColor)
+    console.log(currColor)
   },
 
   // On click change color of event entity and display information text
@@ -14,11 +14,11 @@ AFRAME.registerComponent("click-display-info", {
     if (this.el.currColor != "white") {
       this.el.setAttribute("material", "color: white")
       this.el.currColor = "white"
-      // console.log(this.el.currColor)
+      console.log(this.el.currColor)
     } else {
       this.el.setAttribute("material", "color: red")
       this.el.currColor = "red"
-      // console.log(this.el.currColor)
+      console.log(this.el.currColor)
     }
   },
 })
