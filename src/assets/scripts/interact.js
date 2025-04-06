@@ -19,8 +19,8 @@ AFRAME.registerComponent("click-display-info", {
       this.el.currColor = "white"
       console.log(this.el.currColor)
     } else {
-      this.el.setAttribute("material", "color: red")
-      this.el.currColor = "red"
+      this.el.setAttribute("material", "color: blue")
+      this.el.currColor = "blue"
       console.log(this.el.currColor)
     }
   },
