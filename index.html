@@ -28,11 +28,17 @@
       <a-camera 
       id = "cam"
       gps-new-camera>
+
+      <!--Cursor Entity-->
+      <a-entity cursor="fuse: true; fuseTimeout: 500"
+      position="0 0 -1"
+      geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+      material="color: green; shader: flat">
+      </a-entity>
+
           <!--Arrow Entity will point to Event entity -->
           <a-entity
-          id="userPOV" 
-          cursor="fuse: true; fuseTimeout: 500" 
-          raycaster="objects: .clickable">
+          id="userPOV">
           
             <a-text
             distance-calc
