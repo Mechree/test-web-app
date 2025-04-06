@@ -71,7 +71,31 @@
                 </a-box>
               </a-triangle>
             </a-entity>
+        </a-entity>
 
+        <a-entity 
+          id= "displayWindow" 
+          toggle-entity position="3 0 -1.04">
+            <a-plane 
+            id="display outline"
+            scale= "1.65 1.65 1.65" 
+            color="yellow" 
+            position = "4 0 -1.3">
+          </a-plane>
+        
+          <a-plane  
+            id="display-inline" 
+            scale="1.5 1.5 1.5" 
+            color="green" 
+            position = "4 0 -1.3">
+              <a-text 
+                id="display-info-text" 
+                value="Name: Place: Location:" 
+                color="white" align="left" 
+                scale=".5 .5 .5" 
+                width=5>
+            </a-text>
+          </a-plane>
         </a-entity>
       </a-camera>
 
