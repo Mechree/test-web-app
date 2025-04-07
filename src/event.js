@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (scene) {
     scene.addEventListener("loaded", function () {
-      const elementEvent = document.getElementById("event")
+      const elementEvent = document.getElementById("#event")
 
       if (elementEvent) {
         // console.log("Event entity found!")
