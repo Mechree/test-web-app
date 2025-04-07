@@ -1,4 +1,5 @@
 // Event.js Script
+import { getEventByTitle } from "./fetch-event.js"
 
 // Wait for the document to load, link scene and event entity to their respective variables, place event location via coordinates, and add some sort of marker.
 document.addEventListener("DOMContentLoaded", function () {
@@ -19,10 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
           depth: 8,
         })
 
+        const eventTitle = "Hackathon"
+        const event = getEventByTitle(eventTitle)
+        console.log(event.eventGeo.longitude)
         // Place entity
         elementEvent.setAttribute("gps-new-entity-place", {
-          latitude: 39.651447756872045,
-          longitude: -84.13006522062143,
+          latitude: parseFloat(event.eventGeo.latitude),
+          longitude: parseFloat(event.eventGeo.longitude),
         })
         // Log position
         console.log(
