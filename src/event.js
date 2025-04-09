@@ -5,10 +5,13 @@ import { getEventByTitle } from "./fetch-event.js"
 
 document.addEventListener("DOMContentLoaded", function () {
   const scene = document.querySelector("a-scene")
-
   if (scene) {
-    scene.addEventListener("loaded", function () {
-      const elementEvent = document.getElementById("#event")
+    console.log("event-js scene found!")
+    console.log("Scene load state: ", scene.hasLoaded)
+
+    scene.addEventListener("loaded", async function () {
+      console.log("finding event...")
+      const elementEvent = document.getElementById("event")
 
       if (elementEvent) {
         console.log("Event entity found!")
@@ -22,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
 
         const eventTitle = "Hackathon"
-        const event = getEventByTitle(eventTitle)
+        const event = await getEventByTitle(eventTitle)
         console.log(event.eventGeo.longitude)
         // Place entity
         elementEvent.setAttribute("gps-new-entity-place", {
