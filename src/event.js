@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         `Name: ${event.eventName}
         \nBldg: ${event.eventBldg} 
         \nRm:  ${event.eventRm}
-        \nTime:  ${event.eventTime.toDate()}`
+        \nTime:  ${event.eventTime.toDate().toLocaleString()}`
       )
     } else {
       console.error("Event entity not found!")
