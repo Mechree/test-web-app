@@ -1,7 +1,7 @@
 // Event.js Script
 import { getEventByTitle } from "./fetch-event.js"
 
-// Wait for the document to load, link scene and event entity to their respective variables, place event location via coordinates, and add some sort of marker.
+// Wait for the document to load, link scene and event entity to their respective variables, place event location via coordinates, and apply values to the display info window.
 
 document.addEventListener("DOMContentLoaded", async function () {
   const scene = document.querySelector("a-scene")
@@ -9,11 +9,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     console.log("event-js scene found!")
     console.log("Scene load state: ", scene.hasLoaded)
 
-    console.log("finding event...")
     const elementEvent = document.getElementById("event")
 
     if (elementEvent) {
       console.log("Event entity found!")
+      const infoDisplay = document.getElementById("display-info-text")
 
       // Set scale, primitive and color.
       elementEvent.setAttribute("geometry", {
@@ -34,6 +34,14 @@ document.addEventListener("DOMContentLoaded", async function () {
       console.log(
         "Event Position:",
         elementEvent.getAttribute("gps-new-entity-place")
+      )
+
+      infoDisplay.setAttribute(
+        "value",
+        `Name: ${event.eventName}
+        \nBldg: ${event.eventBldg} 
+        \nRm:  ${event.eventRm}
+        \nTime:  ${event.eventTime.toDate()}`
       )
     } else {
       console.error("Event entity not found!")
