@@ -23,9 +23,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         depth: 8,
       })
 
+      // Create search variable to match with firebase event
       const eventTitle = "Hackathon"
       const event = await getEventByTitle(eventTitle)
-      // Place entity
+
+      // Place entity at gps location using events geloc data from firebase
       elementEvent.setAttribute("gps-new-entity-place", {
         latitude: parseFloat(event.eventGeo.latitude),
         longitude: parseFloat(event.eventGeo.longitude),
@@ -36,6 +38,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         elementEvent.getAttribute("gps-new-entity-place")
       )
 
+      // Display values of event data from firebase
       infoDisplay.setAttribute(
         "value",
         `Name: ${event.eventName}

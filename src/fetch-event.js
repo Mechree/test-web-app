@@ -1,6 +1,6 @@
 // fetchEvent.js
 
-// This script is a function that takes in the time of the fieldname and attempts to match it with an event in the databse. If a match is found then the event data is returned.
+// This script is a function that takes in the time of the fieldname and attempts to match it with an event in the database. If a match is found then the event data is returned.
 
 // Imports
 import { db } from "./firebase.js"
@@ -16,7 +16,7 @@ export async function getEventByTitle(eventTitle) {
   const events = collection(db, "events")
   const qry = query(events, where("eventName", "==", eventTitle))
 
-  // Attemp to get results
+  // Attempt to get results
   try {
     const querySnapshot = await getDocs(qry)
 
