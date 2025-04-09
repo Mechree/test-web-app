@@ -19,4 +19,4 @@ async function testGetEvent() {
   }
 }
 
-// testGetEvent()
+testGetEvent()
